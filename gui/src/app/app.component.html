@@ -1,0 +1,48 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar color="primary"></mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/system">
+        <span style="display: flex; align-items: center;">
+          <mat-icon>computer</mat-icon> &nbsp;
+          <span>System</span>
+        </span>
+      </a>
+
+      <a mat-list-item routerLink="/network">
+        <span style="display: flex; align-items: center;">
+          <mat-icon>lan</mat-icon> &nbsp;
+          <span>Network</span>
+        </span>
+      </a>
+
+      <a mat-list-item routerLink="/gpu">
+        <span style="display: flex; align-items: center;">
+          <mat-icon>developer_board</mat-icon> &nbsp;
+          <span>GPU</span>
+        </span>
+      </a>
+    
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span>{{ title }}</span>
+    </mat-toolbar>
+    <!-- App Content -->
+    <router-outlet />
+    <!-- App Content -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es2020",                         // Use ES2020 or higher for modern browsers
+    "module": "esnext",                         // ES Modules for modern browsers
+    "moduleResolution": "node",                // Resolve modules in Node.js style
+    "lib": ["dom", "es2020"],                   // Include DOM and ES2020 APIs
+    "resolveJsonModule": true,                  // Allow importing JSON modules
+    "allowSyntheticDefaultImports": true,      // Allow synthetic imports for compatibility
+    "esModuleInterop": true,                   // Ensure compatibility with CommonJS modules
+    "strict": true,                             // Enable all strict type-checking options
+    "forceConsistentCasingInFileNames": true,  // Enforce consistent file casing
+    "skipLibCheck": true,                      // Skip library type checking
+    "outDir": "./dist"                         // Output directory for compiled files
+  },
+  "include": ["grpc/**/*"],                     // Include your gRPC-related files
+  "exclude": ["node_modules"]                  // Exclude node_modules
+}
+
+// {
+//   "compilerOptions": {
+//     "moduleResolution": "node",
+//     "resolveJsonModule": true,
+//     "allowSyntheticDefaultImports": true,
+//     "target": "es2018",
+//     "module": "commonjs",
+//     "outDir": "./dist",
+//     "esModuleInterop": true,
+//     "forceConsistentCasingInFileNames": true,
+//     "strict": true,
+//     "skipLibCheck": true
+//   },
+//   "include": ["grpc/**/*"],
+//   "exclude": ["node_modules"]
+// }

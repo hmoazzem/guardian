@@ -1,0 +1,46 @@
+@if (gpus.value()) {
+<div class="p-4">
+  <ng-expandable-table [data]="gpus.value()" [columns]="columns" [cellDefs]="cellDefs"
+    [expandedDetailContent]="customDetailTemplate" (currentRowChanged)="handleRowChange($event)">
+  </ng-expandable-table>
+
+  <ng-template #customDetailTemplate let-rowData>
+    @if (rowData) {
+    <div class="element-description">
+      <div class="flex flex-wrap gap-4 p-2">
+        <button mat-raised-button class="btn-lg text-lg rounded-none" color="primary" (click)="toggleDetails()">
+          <mat-icon>data_object</mat-icon>
+          <span>DETAILS</span>
+        </button>
+
+        <!-- <button mat-raised-button class="btn-lg text-lg rounded-none" color="primary"
+              (click)="openEditNetworkDialog(rowData)">
+              <mat-icon>edit</mat-icon>
+              <span>MANAGE</span>
+            </button> -->
+
+        <!-- <button mat-raised-button class="btn-lg text-lg rounded-none" color="primary"
+              [routerLink]="[rowData.id, 'peers']">
+              <mat-icon>devices</mat-icon>
+              <span>PEERS</span>
+            </button> -->
+
+      </div>
+
+      @if (isShowDetails) {
+      <ng-editor [content]="rowData | json" [mode]="'json'" [isReadOnly]="true" [showGutter]="false">
+      </ng-editor>
+      }
+    </div>
+    }
+  </ng-template>
+</div>
+} @else {
+<div class="center">
+  <mat-spinner></mat-spinner>
+</div>
+}
+
+
+
+<code><pre>{{ gpuMetric.value() | json }}</pre></code>

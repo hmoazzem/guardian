@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package system;
+
+option go_package = "proto/generated";
+
+// The Metrics service definition
+service Metrics {
+    rpc StreamCPUClock(Empty) returns (stream CPUClock);
+    rpc StreamCPUUtilization(Empty) returns (stream CPUUtilization);
+    rpc StreamHwmon(Empty) returns (stream Hwmon);
+}
+
+// An empty message for the request
+message Empty {}
+
+// A message representing cpu clock in GHz for all cores
+message CPUClock {
+    repeated float cpu_clock = 1;
+}
+
+// A message representing utilization for all cores
+message CPUUtilization {
+    repeated float cpu_utilization = 1;  
+}
+
+// A message representing hardware monitoring sensor data
+message Hwmon {
+    string name = 1;
+    double composite = 2;
+    repeated HwmonSensor sensors = 3;
+}
+
+// A message representing an individual hardware monitoring sensor
+message HwmonSensor {
+    string name = 1;
+    double temp = 2;
+}
